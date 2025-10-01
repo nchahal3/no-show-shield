@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EMAIL_FROM = exports.DATABASE_URL = exports.RESEND_API_KEY = exports.TWILIO_PHONE_NUMBER = exports.TWILIO_AUTH_TOKEN = exports.TWILIO_ACCOUNT_SID = exports.STRIPE_API_KEY = exports.JWT_SECRET = void 0;
+exports.JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+exports.STRIPE_API_KEY = process.env.STRIPE_API_KEY || 'your_stripe_api_key';
+exports.TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || 'your_twilio_account_sid';
+exports.TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || 'your_twilio_auth_token';
+exports.TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER || '+10000000000';
+exports.RESEND_API_KEY = process.env.RESEND_API_KEY || 'your_resend_api_key';
+exports.DATABASE_URL = process.env.DATABASE_URL || 'postgresql://user:password@localhost:5432/no_show_shield';
+exports.EMAIL_FROM = process.env.EMAIL_FROM || 'noreply@example.com';

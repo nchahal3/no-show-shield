@@ -1,0 +1,48 @@
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  bookings  Booking[]
+}
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  dateTime    DateTime
+  status      String   // e.g., "confirmed", "canceled", "no-show"
+  deposit     Float
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Reminder {
+  id          Int      @id @default(autoincrement())
+  bookingId   Int
+  message     String
+  sentAt      DateTime
+  booking     Booking   @relation(fields: [bookingId], references: [id])
+}
+
+model Subscription {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  plan        String   // e.g., "starter", "pro"
+  status      String   // e.g., "active", "canceled"
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Payment {
+  id          Int      @id @default(autoincrement())
+  bookingId   Int
+  amount      Float
+  status      String   // e.g., "completed", "pending"
+  booking     Booking   @relation(fields: [bookingId], references: [id])
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
